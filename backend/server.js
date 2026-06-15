@@ -98,16 +98,18 @@ const connectDB = require('./config/db');
 
 dotenv.config();
 connectDB();
+const cors = require("cors");
 
-const app = express();
-
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://prescripto-health-bridge.vercel.app"
-  ],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://prescripto-health-bridge.vercel.app",
+      "https://prescripto-health-bridge-xlsf.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
